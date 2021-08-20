@@ -1,0 +1,11 @@
+[package]
+name = "Q3_Asmt_01"
+version = "0.1.0"
+authors = ["faizan-elite <65185502+faizan-elite@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3.16"
+async-std = "1.9.0"

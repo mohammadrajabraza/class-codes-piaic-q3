@@ -1,0 +1,3 @@
+<h1>Rust Q3 - Assignment 1</h1>
+<h2>Async vs Multi-Threaded</h2>
+<p>Micro controllers & computers have limited resources. To best utilize the resources and increase efficiency / delays, Rust provides us with the models of <strong>async & threads</strong>. As programmers when we are faced with CPU intensive tasks like calculations it is best to utilize threads in our program code where as when we need to perform IO intensive tasks such uploading / downloading files or fetch API requests, it is best to utilize async as it can execute tasks in the background. <br> Both models improve user experience and ensure efficeint use of resources so our programs do not crash due to heavy workload.</p>
