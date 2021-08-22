@@ -2,6 +2,7 @@ use std::{convert::Infallible, net::SocketAddr};
 use hyper::{Body, Request, Response, Server};
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Method, StatusCode};
+use hyper::Client;
 use futures::TryStreamExt as _;
 
 #[tokio::main]
@@ -22,8 +23,16 @@ async fn main() {
     // Configuring server
     let server = Server::bind(&addr).serve(make_svc);
 
+    // And now add a graceful shutdown signal...
+    let graceful = server.with_graceful_shutdown(shutdown_signal());
+
     // Run this server for... forever!
-    if let Err(e) = server.await {
+    // if let Err(e) = server.await {
+    //     eprintln!("server error: {}", e);
+    // }
+    
+    // // Run this server for... forever!
+    if let Err(e) = graceful.await {
         eprintln!("server error: {}", e);
     }
 }
@@ -50,6 +59,11 @@ async fn echo_service(req: Request<Body>) -> Result<Response<Body>, Infallible> 
         (&Method::POST, "/echo") => {
             *response.body_mut() = req.into_body();
         },
+        (&Method::GET, "/fetchdata") => {
+            println!("working.....");
+            fetch_data().await;
+            // *response.body_mut() = Body::from(resp.status());
+        },
         // Route to handle requests that take input from body and 
         // send response converted body text into Upper case 
         (&Method::POST, "/echo/uppercase") => {
@@ -72,4 +86,21 @@ async fn echo_service(req: Request<Body>) -> Result<Response<Body>, Infallible> 
     };
 
     Ok(response)
+}
+
+async fn fetch_data() -> Result<(), Box<dyn std::error::Error>> {
+    
+    let client = Client::new();
+    let uri = "http://httpbin.org/ip".parse()?;
+    let resp = client.get(uri).await?;
+    println!("Response: {:?}", resp.body());
+    
+    Ok(())
+}
+
+async fn shutdown_signal() {
+    // Wait for the CTRL+C signal
+    tokio::signal::ctrl_c()
+        .await
+        .expect("failed to install CTRL+C signal handler");
 }
