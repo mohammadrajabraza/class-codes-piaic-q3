@@ -2,9 +2,13 @@ use mongodb::{Client, options::ClientOptions};
 use mongodb::bson::{doc, Document};
 use serde::{Deserialize, Serialize};
 
+use dotenv::dotenv;
+use std::env;
+
 #[tokio::main]
 async fn main() -> mongodb::error::Result<()> {
-    let mut client_options = ClientOptions::parse("mongodb+srv://<UserName>:<Password>@sandbox.xevcm.mongodb.net/example?retryWrites=true&w=majority").await?;
+    dotenv().ok();
+    let mut client_options = ClientOptions::parse(env::var("DB_URL").unwrap()).await?;
     client_options.app_name = Some("Rust-Mongo-App".to_string());
     let client = Client::with_options(client_options)?;
     
@@ -63,10 +67,42 @@ async fn main() -> mongodb::error::Result<()> {
     // let result = collection.insert_many(docs, None).await?;
     // let result = collection.insert_many(products, None).await?;
     // println!("Newly inserted records : {:?}", result);
+    
 
-    let filter = doc! { "item": "Tablet" };
-    let filtered_record = collection.find_one(filter, None).await?;
-    println!("Filtered Record : {:?}", filtered_record);
+    // uncomment below lines to replace an existing record completey with a new one
+    // println!("\n--------- Replacing single record --------");
+    // let filter = doc! { "item": "Camera" };
+    // let replacement = doc! { "blood_group": 23};
+    // let replaced_records = collection.find_one_and_replace(filter, replacement, None).await?;
+    // println!("Replaced records : {:?}", replaced_records);
+    
+
+    // println!("\n--------- Updating single record --------");
+    // let filter = doc! { "item": "Camera" };
+    // let update = doc! { "$set" : { "qty" : 123 } };
+    // let updated_record = collection.find_one_and_update(filter, update, None).await?;
+    // println!("Updated records : {:?}", updated_record);
+
+    // println!("\n--------- Updating multiple records --------");
+    // let filter = doc! { "item": "Camera" };
+    // let update = doc! { "$set" : { "qty" : 333 } };
+    // let updated_record = collection.update_many(filter, update, None).await?;
+    // println!("Updated records : {:?}", updated_record);
+    
+    // println!("\n--------- Deleting single record --------");
+    // let filter = doc! { "item": "Tablet" };
+    // let deleted_record = collection.delete_one(filter, None).await?;
+    // println!("Deleted records : {:?}", deleted_record);
+
+    println!("\n--------- Deleting multiple records --------");
+    let filter = doc! { "item": "Camera" };
+    let deleted_records = collection.delete_many(filter, None).await?;
+    println!("Deleted records : {:?}", deleted_records);
+    
+
+    // let filter = doc! { "item": "Tablet" };
+    // let filtered_record = collection.find_one(filter, None).await?;
+    // println!("Filtered Record : {:?}", filtered_record);
     
     Ok(())
 }   
