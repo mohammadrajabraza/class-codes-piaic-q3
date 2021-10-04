@@ -2,10 +2,15 @@
 use actix_web::{
     middleware, web, App, HttpRequest, HttpResponse, HttpServer, Responder, Result,
 };
+// Step 8
+use dotenv::dotenv;
+use std::env;
 
 // Step 3
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
+    // Step 9
+    dotenv().ok();
     // Step 4
     HttpServer::new(|| {
 
@@ -15,7 +20,8 @@ async fn main() -> std::io::Result<()> {
             .service(web::resource("/hello").route(web::get().to(hello)))
             
     })
-    .bind("127.0.0.1:8080")?
+    // Step 10
+    .bind(env::var("SOCKET_ADDR").unwrap())?
     .run()
     .await
 }

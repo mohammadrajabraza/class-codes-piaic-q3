@@ -9,3 +9,5 @@ edition = "2018"
 # Step 1
 actix-web = "2.0.0"
 actix-rt = "1.0.0"
+#step 7
+dotenv = "0.15.0"
