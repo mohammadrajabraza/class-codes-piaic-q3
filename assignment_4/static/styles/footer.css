@@ -1,0 +1,13 @@
+footer {
+    margin-top: 20px;
+    background-color: rgb(146, 146, 146);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+footer .copyrights p {
+    margin-top: 20px;
+}

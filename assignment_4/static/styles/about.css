@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+main {
+    margin-top: 20px;
+}
+
+#main-content img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 250px;
+    opacity: 0.8;
+}
+
+#main-content p {
+    display: block;
+    margin: 3% auto 3% auto;
+    width: 90%;
+    font-size: 16pt;
+    text-align: justify;
+}

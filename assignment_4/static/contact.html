@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/contact.css">
+</head>
+<body>
+    <header>
+        <img src="images/bg.png" alt="Background Image"/>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="main-content">
+            <img src="images/contact.png " alt="Contact Us"/>
+        </section>
+        
+        <section id="container">
+            <form action="/action_page.php">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email..">
+            
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Description.." style="height:200px"></textarea>
+            
+                <input type="submit" value="Submit">
+              </form>
+        </section>
+    </main>
+
+    <footer>
+        <section class="copyrights">
+            <p>&copy; All Rights Reserved.</p>
+        </section>
+    </footer>
+</body>
+</html>

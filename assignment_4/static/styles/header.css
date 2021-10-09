@@ -1,0 +1,30 @@
+header img {
+    width: 100%;
+    height: 400px;
+    opacity: 0.8;
+}
+
+nav {
+    padding: 20px;
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+nav a {
+    padding: 5px;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 8px;
+}
+
+.active {
+    background-color: lime;
+    border-radius: 8px;
+}

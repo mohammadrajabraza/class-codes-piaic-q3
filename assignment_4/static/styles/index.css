@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+main {
+    margin-top: 20px;
+}
+
+#main-content {
+    background-color: rgb(240, 216, 209);
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 50px 5px;
+}
+
+article {
+    padding: 5px;
+    width: 25%;
+    text-align: center;
+    border: 3px solid grey;
+}
+
+hr {
+    border: 2px solid grey;
+}
+
+article img {
+    width: 100%;
+    height: 250px;
+}
+
+article h3 {
+    font-size: 20pt;
+}
+
+article p {
+    font-size: 14pt;
+}
+
