@@ -5,6 +5,8 @@ use actix_web::{
 // Step 8
 use dotenv::dotenv;
 use std::env;
+// step 12
+use actix_files as fs;
 
 // Step 3
 #[actix_rt::main]
@@ -23,6 +25,7 @@ async fn main() -> std::io::Result<()> {
             .service(web::resource("/contact").route(web::get().to(contact)))
             .service(web::resource("/hello").route(web::get().to(hello)))
             .service(web::resource("/").route(web::get().to(index)))
+            .service(fs::Files::new("/static", "static/").show_files_listing())
             
     })
     // Step 10

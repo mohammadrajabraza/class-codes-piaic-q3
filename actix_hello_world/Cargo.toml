@@ -11,3 +11,5 @@ actix-web = "2.0.0"
 actix-rt = "1.0.0"
 #step 7
 dotenv = "0.15.0"
+#step 11
+actix-files = "0.2.1"
