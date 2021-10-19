@@ -2,14 +2,28 @@ use actix_web::{
     web, App, HttpResponse, HttpServer, Result,
 };
 
+use mongodb::{Client, options::ClientOptions};
+
 use dotenv::dotenv;
 use std::env;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
-
+    
     println!("Actix-web server started at {:?}", env::var("SOCKET_ADDR").unwrap());
+    
+    let mut client_options = ClientOptions::parse(env::var("DB_URL").unwrap()).await.expect("Mongo error");
+    client_options.app_name = Some("Actix-Mongo-App".to_string()); //Optional
+    let client = Client::with_options(client_options).unwrap();
+
+    // Alternatively you can use the line below instead of above 3 lines
+    // let client = Client::with_uri_str(env::var("DB_URL").unwrap()).await.expect("Mongo error");
+
+    // Checking database connectivity
+    for db_name in client.list_database_names(None, None).await.expect("Mongo error") {
+        println!("{}", db_name);
+    }
 
     HttpServer::new(|| {
         App::new()
