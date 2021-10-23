@@ -1,16 +1,18 @@
 use actix_web::{web, App, HttpResponse, HttpServer, Result};
+use actix_files as fs;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
+            .service(fs::Files::new("/static", "./static").show_files_listing())
             .service(web::resource("/").route(web::get().to(index)))
             .service(web::resource("/products").route(web::get().to(products)))
             .service(web::resource("/about").route(web::get().to(about)))
             .service(web::resource("/contact").route(web::get().to(contact)))
             .service(web::resource("/settings").route(web::get().to(settings)))
     })
-    .bind("127.0.0.1:5002")?
+    .bind("127.0.0.1:5000")?
     .run()
     .await  
 }
