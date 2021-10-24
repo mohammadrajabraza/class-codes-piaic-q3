@@ -1,0 +1,15 @@
+{
+    "serviceName": "static-website",
+    "containers": {
+        "static-website-container": {
+            "image": ":static-website.v1.2",
+            "ports": {
+                "3000": "HTTP"
+            }
+        }
+    },
+    "publicEndpoint": {
+        "containerName": "static-website-container",
+        "containerPort": 3000
+    }
+}
