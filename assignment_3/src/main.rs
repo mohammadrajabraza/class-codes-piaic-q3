@@ -5,7 +5,7 @@ use mongodb::bson::{doc, Document};
 #[tokio::main]
 async fn main() -> mongodb::error::Result<()> {
     // Making Database connection
-    let mut client_options = ClientOptions::parse("mongodb://vidly-user:12345@vidly-shard-00-00.ypxnu.mongodb.net:27017,vidly-shard-00-01.ypxnu.mongodb.net:27017,vidly-shard-00-02.ypxnu.mongodb.net:27017/vidly?ssl=true&replicaSet=atlas-1437c6-shard-0&authSource=admin&retryWrites=true&w=majority").await?;
+    let mut client_options = ClientOptions::parse("mongodb://----------:-----@vidly-shard-00-00.ypxnu.mongodb.net:27017,vidly-shard-00-01.ypxnu.mongodb.net:27017,vidly-shard-00-02.ypxnu.mongodb.net:27017/vidly?ssl=true&replicaSet=atlas-1437c6-shard-0&authSource=admin&retryWrites=true&w=majority").await?;
 
     // Set the name of the app
     client_options.app_name = Some("Rust Store App".to_string());   
