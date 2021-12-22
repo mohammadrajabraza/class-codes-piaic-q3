@@ -1,0 +1,28 @@
+#categories {
+    float: left;
+    height: 1220px;
+    background-color: rgb(212, 241, 233);
+    width: 20%;
+    padding: 15px;
+}
+
+#categories ul {
+    padding: 20px;
+}
+
+#categories ul li {
+    list-style: none;
+    padding: 10px;
+    font-size: 16pt;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#categories ul li a {
+    padding: 5px;
+}
+
+#categories ul li a:hover {
+    background-color: lime;
+    border-radius: 8px;
+}
